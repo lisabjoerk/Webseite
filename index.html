@@ -1,11 +1,100 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Chat with a Cat!</title>
+
+    <!-- Google Font: Space Grotesk (passt zum fetten, modernen Look aus Figma) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lottie Player (für die Lade-Animation) -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    bla hallo 11
+
+    <!-- Animierter Hintergrund: 4 farbige Blobs bewegen sich kontinuierlich -->
+    <div class="bg-wrap">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="blob blob-4"></div>
+    </div>
+
+    <!-- ===================== SCREEN 1: LANDING ===================== -->
+    <section class="screen" id="screen-landing">
+      <h1 class="hero-title">CHAT WITH<br />A CAT!</h1>
+      <button class="glass-btn" id="btn-lets-go">Let's go</button>
+    </section>
+
+    <!-- ===================== SCREEN 2: FEELING SAD? ===================== -->
+    <section class="screen hidden" id="screen-question">
+      <h2 class="hero-title">FEELING SAD?</h2>
+      <div class="btn-row">
+        <button class="glass-btn" id="btn-yes">Yes</button>
+        <button class="glass-btn" id="btn-nope">Nope</button>
+      </div>
+    </section>
+
+    <!-- ===================== SCREEN 3: CHAT ===================== -->
+    <section class="screen hidden" id="screen-chat">
+
+      <!-- Exit-Button oben rechts -->
+      <button class="exit-btn" id="btn-exit">Exit &#8594;</button>
+
+      <!-- Cartoon-Katze "GATO" sitzt auf dem Chat-Panel -->
+      <div class="chat-wrapper">
+        <img src="Assets/cat.png" alt="Gato the Cat" class="gato-img" />
+
+        <!-- Glassmorphism Chat-Panel -->
+        <div class="chat-panel glass-panel">
+          <div class="chat-header">GATO THE CAT</div>
+
+          <!-- Hier erscheinen die Nachrichten -->
+          <div class="chat-messages" id="chat-messages">
+            <!-- Nachrichten werden per JavaScript hinzugefügt -->
+          </div>
+
+          <!-- Lottie Lade-Animation (erscheint während API-Anfrage) -->
+          <div class="loading-wrap hidden" id="loading">
+            <lottie-player
+              src="Assets/loading.json"
+              background="transparent"
+              speed="1"
+              style="width: 80px; height: 80px"
+              loop
+              autoplay
+            ></lottie-player>
+          </div>
+
+          <!-- Eingabebereich -->
+          <div class="chat-input-row">
+            <input
+              type="text"
+              id="chat-input"
+              class="chat-input glass-panel"
+              placeholder="Schreib mir was..."
+              autocomplete="off"
+            />
+            <button class="send-btn" id="btn-send">
+              <!-- Pfeil-Icon als SVG -->
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                <path d="M2 12L22 2L12 22L10 14L2 12Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
